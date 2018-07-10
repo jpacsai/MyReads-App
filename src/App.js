@@ -4,51 +4,73 @@ import './App.css'
 import { Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks';
 import ListBooks from './ListBooks';
+import { Component } from 'react';
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   constructor(props) {
     super(props);
     this.changeShelf = this.changeShelf.bind(this);
     this.checkShelf = this.checkShelf.bind(this);
     this.state = {
-      books: [],
+      onShelf: [],
       current: [],
       want: [],
       read: []
     }
   }
 
-  checkShelf(b) {
-    const result = this.state.books.filter((s) => s.id === b.id);
-    console.log(b.title);
-    return result.length > 0 ? result[0].shelf : 'none';
+  // fetch all books already on shelves on page load
+  componentDidMount(){
+    this.getShelf();
   }
 
-  sortBooks(b) {
-    const current = b.filter((book) => book.shelf === 'currentlyReading');
-    const want = b.filter((book) => book.shelf === 'wantToRead');
-    const read = b.filter((book) => book.shelf === 'read');
-    this.setState({
-      current,
-      want,
-      read,
-      books: b
-    })
-  }
-
-  changeShelf(e, b) {
-    BooksAPI.update(b, e).then(this.getShelf());
-  }
-
+  // fetch all books already on shelves (currently reading, want to read and read)
+  // then check if each book has missing properties (image url, author)
+  // sort books into relevant shelves in state
   getShelf() {
     BooksAPI.getAll().then((books) => {
-      console.log(books);
+      books.forEach((book) => this.bookChecker(book));
       this.sortBooks(books);
     });
   }
 
-  componentDidMount(){
-    this.getShelf();
+  // then check if each book has missing properties (image url, author)
+  bookChecker(b){
+    // if imageLink property is missing add a link for placeholder
+    if (b.hasOwnProperty('imageLinks') === false) {
+      b.imageLinks = 'url("https://i.imgur.com/OUAxmdN.png")'
+    }
+    // if author property is missing add text
+    if (b.hasOwnProperty('authors') === false) {
+      b.authors = ['unknown author']
+    }
+    return b;
+  }
+
+  // sort a book into it's relevant shelf based on it's in shelf property
+  sortBooks(b) {
+    const current = b.filter((book) => book.shelf === 'currentlyReading');
+    const want = b.filter((book) => book.shelf === 'wantToRead');
+    const read = b.filter((book) => book.shelf === 'read');
+    // set it in state
+    this.setState({
+      onShelf: b,
+      current,
+      want,
+      read
+    })
+  }
+
+  // check if book is on shelf
+  // return it's shelf value or 'none' if not on shelf
+  checkShelf(b) {
+    const result = this.state.onShelf.filter((s) => s.id === b.id);
+    return result.length > 0 ? result[0].shelf : 'none';
+  }
+
+  // update a books shelf property
+  changeShelf(e, b) {
+    BooksAPI.update(b, e).then(this.getShelf());
   }
 
   render() {
@@ -56,7 +78,7 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path='/' render={ () => 
           <ListBooks
-            books={ this.state.books }
+            books={ this.state.onShelf }
             current={ this.state.current }
             want={ this.state.want }
             read={ this.state.read }
@@ -66,12 +88,10 @@ class BooksApp extends React.Component {
 
         <Route path='/search' render={ () => 
           <SearchBooks 
-            books={ this.state.books }
-            current={ this.state.current }
-            want={ this.state.want }
-            read={ this.state.read }
+            books={ this.state.onShelf }
             checkShelf={ this.checkShelf }
-            changeShelf={ this.changeShelf } /> 
+            changeShelf={ this.changeShelf } 
+            bookChecker={ this.bookChecker } />
           }/>
       </div>
     )
