@@ -22,7 +22,6 @@ class BooksApp extends Component {
   // fetch all books already on shelves on page load
   componentDidMount(){
     this.getShelf();
-<<<<<<< HEAD
   }
 
   // fetch all books already on shelves (currently reading, want to read and read)
@@ -48,33 +47,6 @@ class BooksApp extends Component {
     return b;
   }
 
-=======
-  }
-
-  // fetch all books already on shelves (currently reading, want to read and read)
-  // then check if each book has missing properties (image url, author)
-  // sort books into relevant shelves in state
-  getShelf() {
-    BooksAPI.getAll().then((books) => {
-      books.forEach((book) => this.bookChecker(book));
-      this.sortBooks(books);
-    });
-  }
-
-  // then check if each book has missing properties (image url, author)
-  bookChecker(b){
-    // if imageLink property is missing add a link for placeholder
-    if (b.hasOwnProperty('imageLinks') === false) {
-      b.imageLinks = 'url("https://i.imgur.com/OUAxmdN.png")'
-    }
-    // if author property is missing add text
-    if (b.hasOwnProperty('authors') === false) {
-      b.authors = ['unknown author']
-    }
-    return b;
-  }
-
->>>>>>> 53e68b96c330cd1d2cd6cdbcb13edb40b9038fc3
   // sort a book into it's relevant shelf based on it's in shelf property
   sortBooks(b) {
     const current = b.filter((book) => book.shelf === 'currentlyReading');
@@ -96,7 +68,6 @@ class BooksApp extends Component {
     return result.length > 0 ? result[0].shelf : 'none';
   }
 
-<<<<<<< HEAD
   // update a book's shelf property
   changeShelf(e, b) {
     // copy array of books on shelves to modify changed book's shelf property
@@ -109,11 +80,6 @@ class BooksApp extends Component {
     // and set it in state to reflect shelf change immediately
     this.sortBooks(updateShelf);
     BooksAPI.update(b, e);
-=======
-  // update a books shelf property
-  changeShelf(e, b) {
-    BooksAPI.update(b, e).then(this.getShelf());
->>>>>>> 53e68b96c330cd1d2cd6cdbcb13edb40b9038fc3
   }
 
   render() {
