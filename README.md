@@ -9,6 +9,8 @@ This project is developed for Google/Udacity Front End Web Development Nanodegre
 * [Installation](#installation)
 * [How to use](#using-the-app)
 * [Compatibility](#browser-compatibility)
+* [Screenshots](#screenshots)
+* [Credits](#credits)
 
 ## Project 
 Adding interactivity to the app with React by refactoring the code provided for the basic static page
@@ -33,5 +35,15 @@ In the search page the user can type into the input form to search for books and
 ## Browser compatibility
 The site was tested on Google Chrome only
 
-## Acknowledgments
+## Screenshots
+
+**Main shelves**  
+
+![screenshot1](https://github.com/jpacsai/MyReads-App/blob/master/public/img/screenshot1.JPG)  
+
+**Search books**  
+
+![screenshot2](https://github.com/jpacsai/MyReads-App/blob/master/public/img/screenshot2.JPG)
+
+## Credits
 Favicon from [FreePik](https://www.freepik.com/free-vector/education-icons-set_1148964.htm#term=book%20icon&page=1&position=2)
