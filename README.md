@@ -20,7 +20,7 @@ The task was to add interactivity to the app with React by refactoring the code 
 
 * [Live link](#live-link)
 * [Getting started](#getting-started)
-* [How to use](#using-the-app)
+* [How to use](#how-to-use)
 * [Licence](#licence)
 * [Credits](#credits)
 
