@@ -1,5 +1,6 @@
 # MyReads - book tracking app
-This project is developed for Google/Udacity Front End Web Development Nanodegree (Project 7).
+
+**This project is developed for Google/Udacity Front End Web Development Nanodegree (Project 7).**
 
 With this app the user can categorize books into 3 groups (Want to read, Currently reading, Read), move them between categories and look up new books to add them to the collection.
 
