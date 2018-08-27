@@ -16,7 +16,7 @@ This project is developed for Google/Udacity Front End Web Development Nanodegre
 Adding interactivity to the app with React by refactoring the code provided for the basic static page
 
 ## Live link
-[LINK](https://jpacsai.github.io/MyReads-App/)
+Open the page directly from [here](https://jpacsai.github.io/MyReads-App/)
 
 ## Dependencies
 - Starter code from [Udacity](https://github.com/udacity/reactnd-project-myreads-starter)  
