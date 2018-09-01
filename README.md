@@ -1,4 +1,4 @@
-# MyReads - book tracking app
+# MyReads - book tracking app 📚
 
 **This project is developed for Google/Udacity Front End Web Development Nanodegree (Project 7).**
 
@@ -18,11 +18,11 @@ The task was to add interactivity to the app with React by refactoring the code 
 
 ## 📑 Table of Contents
 
-* [Live link](#live-link)
-* [Getting started](#getting-started)
-* [How to use](#how-to-use)
-* [Licence](#licence)
-* [Credits](#credits)
+* [Live link](#-live-link)
+* [Getting started](#-getting-started)
+* [How to use](#-how-to-use)
+* [Licence](#-licence)
+* [Credits](#-credits)
 
 ## 🔗 Live link
 Open the page directly from [here](https://jpacsai.github.io/MyReads-App/)
@@ -30,7 +30,7 @@ Open the page directly from [here](https://jpacsai.github.io/MyReads-App/)
 ## 🏁 Getting started
 
 ### Installation
-1. Clone [repository](https://github.com/jpacsai/Restaurant_Reviews_App)
+1. Clone [repository](https://github.com/jpacsai/MyReads-App)
 2. install all project dependencies with `npm install`
 3. start the server with `npm start`
 4. the aplication runs on http://localhost:3000
